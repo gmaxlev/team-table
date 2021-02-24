@@ -8,17 +8,18 @@ import CalendarTeam from "./CalendarTeam";
 interface IComponentProps {
     calendar: ICalendar,
     days: IPeriodDay[],
-    activePeriod: Date
+    activePeriod: Date,
+    onClick?: () => void
 }
 
-export default function Calendar({calendar, days, activePeriod}: IComponentProps) {
+export default function Calendar({calendar, days, activePeriod, onClick}: IComponentProps) {
     return <table className={Styles.calendarTable}>
         <thead>
             <tr>
                 <td className={Styles.calendarTable__addVocation}>
-                    <Button text={'Add Vacation'}/>
+                    <Button onClick={onClick} text={'Add Vacation'}/>
                 </td>
-                {days.map(day => <td className={classNames({
+                {days.map((day, key) => <td key={key} className={classNames({
                     [Styles.calendarTable__dayOff]: day.isDayOff
                 })}>
                     <span>{day.date.toLocaleDateString("en-US", { weekday: "short" }).substr(0, 2)}</span>
@@ -26,6 +27,6 @@ export default function Calendar({calendar, days, activePeriod}: IComponentProps
                 </td>)}
             </tr>
         </thead>
-        {calendar.teams.map(team => <CalendarTeam days={days} team={team} activePeriod={activePeriod}/>)}
+        {calendar.teams.map((team, key) => <CalendarTeam days={days} key={key} team={team} activePeriod={activePeriod}/>)}
     </table>
 }

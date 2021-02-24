@@ -4,10 +4,17 @@ import {ICalendar, IPeriodDay} from "../../types";
 import Loading from '../Loading/Loading'
 import Navigation from "../Navigation/Navigation";
 import Calendar from "../Calendar/Calendar";
+import ModalWindow from '../ModalWindow/ModalWindow';
+import {dateInKebabCase} from '../../utils/index'
 
 interface IState {
     activeDate: Date,
-    calendarData: ICalendar | null
+    calendarData: ICalendar | null,
+    modal: {
+        isShowModal: boolean
+        startDate: string,
+        endDate: string
+    }
 }
 
 export default class App extends React.Component<{}, IState> {
@@ -15,7 +22,12 @@ export default class App extends React.Component<{}, IState> {
         super(props);
         this.state = {
             activeDate: new Date(),
-            calendarData: null
+            calendarData: null,
+            modal: {
+                isShowModal: false,
+                startDate: dateInKebabCase(new Date()),
+                endDate: dateInKebabCase(new Date())
+            }
         }
         this.nextMonth = this.nextMonth.bind(this)
         this.prevMonth = this.prevMonth.bind(this)
@@ -55,14 +67,39 @@ export default class App extends React.Component<{}, IState> {
             alert(e)
         }
     }
+    showModalWindow = () => {
+        this.setState({
+            modal:{...this.state.modal, isShowModal: true }
+        })
+    }
+
+    hideModalWindow = () => {
+        this.setState({
+            modal:{...this.state.modal, isShowModal: false}
+        })
+    }
+
+    changeDate = (event: React.ChangeEvent<HTMLInputElement>) => {
+        let value = event.target.value;
+        let copyModal = Object.assign({}, this.state.modal);
+
+        if(Date.parse(value) < Date.parse(this.state.modal.startDate)) {
+            console.log("!@#");
+        }
+        this.setState({
+            modal: {...copyModal, [event.target.name]: value}
+        })
+    }
 
     render() {
+        let {calendarData, activeDate, modal: {startDate, endDate, isShowModal}} = this.state;
         return <div className='container'>
-            {this.state.calendarData===null &&  <Loading text="Loading..."/>}
-            {this.state.calendarData!==null &&
+            {calendarData===null &&  <Loading text="Loading..."/>}
+            {isShowModal && <ModalWindow onChangeInput={this.changeDate} startDate={startDate} endDate={endDate} onCancel={this.hideModalWindow} onSend={() =>{}} />}
+            {calendarData!==null &&
                 <>
-                    <Navigation date={this.state.activeDate} next={this.nextMonth} prev={this.prevMonth}/>
-                    <Calendar calendar={this.state.calendarData} activePeriod={this.state.activeDate} days={this.getDaysOfActivePeriod()}/>
+                    <Navigation date={activeDate} next={this.nextMonth} prev={this.prevMonth}/>
+                    <Calendar onClick={this.showModalWindow} calendar={calendarData} activePeriod={activeDate} days={this.getDaysOfActivePeriod()}/>
                 </>
             }
         </div>

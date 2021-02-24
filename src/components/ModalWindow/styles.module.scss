@@ -1,0 +1,107 @@
+.backgroundModal{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #00000042;
+}
+
+.modalWindow{
+    position: absolute;
+    background: #fff;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    max-width: 400px;
+    z-index: 2;
+    border-radius: 5px;
+
+        &__header{
+            background: #EAEAEA;
+            border-radius: 5px;
+            padding: 10px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h3{
+                font-size: 16px;
+                text-transform: capitalize;
+                line-height: 22px;
+                color: #575757;
+                font-weight: 800;
+            }
+
+            span{
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 21px;
+                color: #666666;
+            }
+
+            &:not(:first-child){
+                margin-top: 10px;
+            }
+        }
+        
+        &__body{
+            padding: 15px 30px 22px;
+
+            .headText{
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 21px;
+                color: #000;
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .choose:not(:last-child){
+                margin-bottom: 10px;
+            }
+
+            select{
+                border-radius: 3px;
+                background: #E9E9E9;
+                border: none;
+                display: block;
+                width: 100%;
+                padding: 10px 15px;
+            }
+
+            select:active, select:focus{
+                border: none;
+                outline: none;
+            }
+
+            .buttonsBlock{
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+
+                &__Cancel, &__Send{
+                    border-radius: 4px;
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 21px;
+                    min-width: 135px;
+                    padding: 8px 15px;
+                    cursor: pointer;
+                }
+
+                &__Cancel{
+                    border: 1px solid #D0D0D0;
+                    color: #000;
+                    background: #fff;
+                }
+
+                &__Send{
+                    border: 1px solid #48BA46;
+                    color: #fff;
+                    background: #48BA46;
+                }
+            }
+        }
+}

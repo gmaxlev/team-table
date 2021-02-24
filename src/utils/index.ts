@@ -34,3 +34,7 @@ export function checkVacationsDate(vacations:IVacation[], date: Date) {
     });
     return result;
 }
+
+export function dateInKebabCase(date: Date): string {
+    return `${date.getFullYear()}-${(date.getMonth() + 1) < 9  ? `0${date.getMonth() + 1}` : date.getMonth() + 1}-${date.getDate()}`
+}

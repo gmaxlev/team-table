@@ -47,15 +47,15 @@ export default class CalendarTeam extends React.Component<IComponentProps, IComp
                         </button>
                     </div>
                 </td>
-                {this.props.days.map(day => <td className={classNames({
+                {this.props.days.map((day, key) => <td key={key} className={classNames({
                     [Styles.calendarTable__dayOff]: day.isDayOff,
                 })}></td>)}
             </tr>
-            {this.state.isOpen && this.props.team.members.map(member => <tr>
+            {this.state.isOpen && this.props.team.members.map((member, key) => <tr key={key}>
                 <td>
                     <div className={Styles.calendarTable__teamTitle}>{member.name}</div>
                 </td>
-                {this.props.days.map(day => <td className={classNames({
+                {this.props.days.map((day, key) => <td key={key} className={classNames({
                     [Styles.calendarTable__dayOff]: day.isDayOff,
                     [Styles.calendarTable__vacations]: checkVacationsDate(member.vacations, day.date)
                 })}></td>)}
