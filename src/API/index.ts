@@ -6,6 +6,7 @@ const departmentTeams: ICalendar = {
         {
             name: "Frontend Team",
             percentageOfAbsent: [0, 2, 0, 0, 1, 22, 2, 2, 2, 2, 11, 1],
+            id: 1,
             members: [
                 {
                     name: "FE_Team_User1",
@@ -15,7 +16,7 @@ const departmentTeams: ICalendar = {
                     ],
                 },
                 {
-                    name: "FE_Team_User1",
+                    name: "FE_Team_User2",
                     vacations: [
                         { startDate: "20.02.2020", endDate: "22.02.2020", type: "UnPaid" },
                         { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
@@ -26,16 +27,59 @@ const departmentTeams: ICalendar = {
         {
             name: "Backend Team",
             percentageOfAbsent: [0, 2, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1],
+            id: 2,
             members: [
                 {
-                    name: "FE_Team_User1",
+                    name: "FE_Team_User3",
                     vacations: [
                         { startDate: "15.02.2020", endDate: "22.02.2020", type: "UnPaid" },
                         { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
                     ],
                 },
                 {
-                    name: "FE_Team_User1",
+                    name: "FE_Team_User4",
+                    vacations: [
+                        { startDate: "20.02.2020", endDate: "22.02.2020", type: "UnPaid" },
+                        { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
+                    ],
+                },
+            ],
+        },
+        {
+            name: "C++ Team",
+            percentageOfAbsent: [0, 2, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1],
+            id: 3,
+            members: [
+                {
+                    name: "FE_Team_User5",
+                    vacations: [
+                        { startDate: "15.02.2020", endDate: "22.02.2020", type: "UnPaid" },
+                        { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
+                    ],
+                },
+                {
+                    name: "FE_Team_User6",
+                    vacations: [
+                        { startDate: "20.02.2020", endDate: "22.02.2020", type: "UnPaid" },
+                        { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
+                    ],
+                },
+            ],
+        },
+        {
+            name: "Java Team",
+            percentageOfAbsent: [0, 2, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1],
+            id: 4,
+            members: [
+                {
+                    name: "FE_Team_User7",
+                    vacations: [
+                        { startDate: "15.02.2020", endDate: "22.02.2020", type: "UnPaid" },
+                        { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
+                    ],
+                },
+                {
+                    name: "FE_Team_User8",
                     vacations: [
                         { startDate: "20.02.2020", endDate: "22.02.2020", type: "UnPaid" },
                         { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },

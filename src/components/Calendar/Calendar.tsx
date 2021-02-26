@@ -9,15 +9,17 @@ interface IComponentProps {
     calendar: ICalendar,
     days: IPeriodDay[],
     activePeriod: Date,
-    onClick?: () => void
+    onAddVocation?: () => void
 }
 
-export default function Calendar({calendar, days, activePeriod, onClick}: IComponentProps) {
-    return <table className={Styles.calendarTable}>
+export default function Calendar({calendar, days, activePeriod, onAddVocation}: IComponentProps) {
+    return <table className={classNames({
+        [Styles.calendarTable]: true,
+    })}>
         <thead>
             <tr>
                 <td className={Styles.calendarTable__addVocation}>
-                    <Button onClick={onClick} text={'Add Vacation'}/>
+                    <Button onClick={onAddVocation} text={'Add Vacation'}/>
                 </td>
                 {days.map((day, key) => <td key={key} className={classNames({
                     [Styles.calendarTable__dayOff]: day.isDayOff

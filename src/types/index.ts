@@ -7,6 +7,7 @@ export interface ITeam {
     name: string,
     percentageOfAbsent: [number,number,number,number,number,number,number,number,number,number,number,number],
     members: ITeamMember[]
+    id: number
 }
 
 export interface ITeamMember {
