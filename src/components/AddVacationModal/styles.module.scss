@@ -1,10 +1,10 @@
-.addVocationModal {
+.addVacationModal {
   width: 393px;
   background: #FFFFFF;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 }
-.addVocationModal__header {
+.addVacationModal__header {
   background: #EAEAEA;
   border-radius: 5px;
   display: flex;
@@ -27,10 +27,10 @@
     }
   }
 }
-.addVocationModal__content {
+.addVacationModal__content {
   padding: 15px 27.81px;
 }
-.addVocationModal__inputs {
+.addVacationModal__inputs {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -71,7 +71,7 @@
     }
   }
 }
-.addVocationModal__errors {
+.addVacationModal__errors {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -87,13 +87,13 @@
     }
   }
 }
-.addVocationModal__formGroup {
+.addVacationModal__formGroup {
   margin-bottom: 20px;
   &:last-child{
     margin-bottom: 0;
   }
 }
-.addVocationModal__formGroupHeader{
+.addVacationModal__formGroupHeader{
   font-weight: 600;
   font-size: 0.875rem;
   line-height: 1.3125rem;
@@ -101,10 +101,10 @@
   margin: 0;
   margin-bottom: 6px;
 }
-.addVocationModal__select {
+.addVacationModal__select {
   width: 100%;
 }
-.addVocationModal__added {
+.addVacationModal__added {
   background-color: #9bff99;
   padding: 10px;
   margin-bottom: 16px;

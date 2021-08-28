@@ -4,8 +4,7 @@ import {ICalendar, IPeriodDay} from "../../types";
 import Loading from '../Loading/Loading'
 import Navigation from "../Navigation/Navigation";
 import Calendar from "../Calendar/Calendar";
-import ModalWindow from '../ModalWindow/ModalWindow';
-import AddVocationModal from "../AddVocationModal/AddVocationModal";
+import AddVacationModal from "../AddVacationModal/AddVacationModal";
 
 interface IState {
     activeDate: Date,
@@ -23,7 +22,7 @@ export default class App extends React.Component<{}, IState> {
         }
         this.nextMonth = this.nextMonth.bind(this)
         this.prevMonth = this.prevMonth.bind(this)
-        this.addVocation = this.addVocation.bind(this)
+        this.addVacation = this.addVacation.bind(this)
     }
     nextMonth():void {
         this.setState({
@@ -35,7 +34,7 @@ export default class App extends React.Component<{}, IState> {
             activeDate: new Date(this.state.activeDate.setMonth(this.state.activeDate.getMonth() - 1))
         })
     }
-    addVocation(team: number, member: number, dateFrom: Date, dateTo: Date) {
+    addVacation(team: number, member: number, dateFrom: Date, dateTo: Date) {
         if (this.state.calendarData!==null) {
             const calendarData: ICalendar = JSON.parse(JSON.stringify(this.state.calendarData))
             const dateFromFix = new Date(dateFrom.setMonth(dateFrom.getMonth()+1));
@@ -45,7 +44,6 @@ export default class App extends React.Component<{}, IState> {
                 endDate: `${('0' + dateToFix.getDate()).slice(-2)}.${('0' + dateToFix.getMonth()).slice(-2)}.${dateToFix.getFullYear()}`,
                 type: 'Paid'
             })
-            console.log('ADD')
             this.setState({
                 ...this.state,
                 calendarData: calendarData
@@ -87,12 +85,12 @@ export default class App extends React.Component<{}, IState> {
         let {calendarData, activeDate, isShowModal } = this.state;
         return <div className='container'>
 
-            {calendarData && calendarData.teams && <AddVocationModal addVocations={this.addVocation} teams={calendarData?.teams} isShow={this.state.isShowModal} onCancel={() => this.toggleShowModal(false)} />}
+            {calendarData && calendarData.teams && <AddVacationModal addVacations={this.addVacation} teams={calendarData?.teams} isShow={this.state.isShowModal} onCancel={() => this.toggleShowModal(false)} />}
             {calendarData===null &&  <Loading text="Loading..."/>}
             {calendarData!==null &&
                 <>
                     <Navigation date={activeDate} next={this.nextMonth} prev={this.prevMonth}/>
-                    <Calendar onAddVocation={() => this.toggleShowModal(true)} calendar={calendarData} activePeriod={activeDate} days={this.getDaysOfActivePeriod()}/>
+                    <Calendar onAddVacation={() => this.toggleShowModal(true)} calendar={calendarData} activePeriod={activeDate} days={this.getDaysOfActivePeriod()}/>
                 </>
             }
         </div>

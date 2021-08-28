@@ -5,7 +5,7 @@ export interface ICalendar {
 
 export interface ITeam {
     name: string,
-    percentageOfAbsent: [number,number,number,number,number,number,number,number,number,number,number,number],
+    percentageOfAbsent: number[],
     members: ITeamMember[]
     id: number
 }

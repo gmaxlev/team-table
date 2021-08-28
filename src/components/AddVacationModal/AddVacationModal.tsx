@@ -6,12 +6,12 @@ import Styles from './styles.module.scss';
 import {ITeam} from "../../types";
 import Button from "../Button/Button";
 
-export interface AddVocationModalProps extends IModalWindowProps{
+export interface AddVacationModalProps extends IModalWindowProps{
     teams: ITeam[],
-    addVocations: (team: number, member: number, dateFrom: Date, dateTo: Date) => void
+    addVacations: (team: number, member: number, dateFrom: Date, dateTo: Date) => void
 }
 
-export default function AddVocationModal(props:AddVocationModalProps) {
+export default function AddVacationModal(props:AddVacationModalProps) {
 
     const [errors, setErrors] = React.useState<string[]>([])
     const [dateFrom, setDateFrom] = React.useState<string>('')
@@ -66,26 +66,26 @@ export default function AddVocationModal(props:AddVocationModalProps) {
         if (errorsForm.length) {
             setErrors(errorsForm)
         } else {
-            props.addVocations(Number(selectedTeam), Number(selectedMember), getDateFromString(dateFrom), getDateFromString(dateTo))
+            props.addVacations(Number(selectedTeam), Number(selectedMember), getDateFromString(dateFrom), getDateFromString(dateTo))
             setHasAdded(true)
         }
     }, [dateFrom, dateTo, selectedTeam, selectedMember])
 
-    return <ModalWindow {...props}><div className={Styles.addVocationModal}>
-        <h3 className={Styles.addVocationModal__header}>
+    return <ModalWindow {...props}><div className={Styles.addVacationModal}>
+        <h3 className={Styles.addVacationModal__header}>
             <span>Vacation Request</span>
             {countDaysBetweenDates!==false && <span>{countDaysBetweenDates} Days</span>}
         </h3>
-        <div className={Styles.addVocationModal__content}>
-            {hasAdded && <div className={Styles.addVocationModal__added}>Added</div>}
-            {errors.length ? <ul className={Styles.addVocationModal__errors}>
+        <div className={Styles.addVacationModal__content}>
+            {hasAdded && <div className={Styles.addVacationModal__added}>Added</div>}
+            {errors.length ? <ul className={Styles.addVacationModal__errors}>
                 {errors.map((item, index) => {
                     return <li key={index}>{item}</li>
                 })}
             </ul> : null}
-            <div className={Styles.addVocationModal__formGroup}>
-                <p className={Styles.addVocationModal__formGroupHeader}>Dates</p>
-                <div className={Styles.addVocationModal__inputs}>
+            <div className={Styles.addVacationModal__formGroup}>
+                <p className={Styles.addVacationModal__formGroupHeader}>Dates</p>
+                <div className={Styles.addVacationModal__inputs}>
                     <label>
                         <span>From</span>
                         <input placeholder={'DD.MM.YYYY'} type="text" value={dateFrom} onChange={e => setDateFrom(e.target.value)}/>
@@ -96,9 +96,9 @@ export default function AddVocationModal(props:AddVocationModalProps) {
                     </label>
                 </div>
             </div>
-            <div className={Styles.addVocationModal__formGroup}>
-                <p className={Styles.addVocationModal__formGroupHeader}>Teams</p>
-                <select  className={Styles.addVocationModal__select} onChange={e => {
+            <div className={Styles.addVacationModal__formGroup}>
+                <p className={Styles.addVacationModal__formGroupHeader}>Teams</p>
+                <select  className={Styles.addVacationModal__select} onChange={e => {
                     setSelectedTeam(e.target.value)
                 }
                 } value={selectedTeam}>
@@ -109,9 +109,9 @@ export default function AddVocationModal(props:AddVocationModalProps) {
 
                 </select>
             </div>
-            {selectedTeam!==null && <div className={Styles.addVocationModal__formGroup}>
-                <p className={Styles.addVocationModal__formGroupHeader}>Members</p>
-                <select className={Styles.addVocationModal__select} onChange={e => {
+            {selectedTeam!==null && <div className={Styles.addVacationModal__formGroup}>
+                <p className={Styles.addVacationModal__formGroupHeader}>Members</p>
+                <select className={Styles.addVacationModal__select} onChange={e => {
                     setSelectedMember(e.target.value)
                 }
                 } value={selectedMember}>
